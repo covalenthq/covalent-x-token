@@ -1,0 +1,28 @@
+/target
+/out
+/cache
+/coverage
+lcov.info
+.DS_Store
+.env
+
+broadcast/*/31337
+deployments/31337.md
+deployments/json/31337.json
+
+# Certora and Gambit cache
+.certora_internal
+collect.json
+collection_failures.txt
+
+# IDE Folders
+.idea
+.vscode
+
+# Static Files
+script/staticFiles
+
+# Dependency directories
+node_modules/
+
+broadcast/

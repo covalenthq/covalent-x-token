@@ -1,0 +1,17 @@
+- Based on OpenZepplin's ERC20 implementations. : done
+- Upon genesis, an initial supply of 1B tokens are minted: done
+- ticker CXT: done
+- ERC20 (transfer, approve, etc.): done
+- name "Covalent X Token": done
+- decimals 18: done
+- initial supply 1B - same as today: done
+- permit: done
+- consider ACLs to separate out mint-cap, mint and pause
+- defaultADMIN, cap_manager, permit2 revoke: protocolCouncil
+- EMISSION: emissionManager(contract)
+- permit2 revoke: emergencyCouncil
+- new supply mintable (amount is mint cap last mint) by owner : done
+- mint pausable by owner : is kind of if you set mintcap to zero?
+- hard limit of 10 CXT minted per second: done
+- mint cap set by owner :CAP_MANAGER_ROLE aka procotolCouncil : done
+- Not going to setup a migration contract instead, the balances need to be copied from a snapshot of the old token contract

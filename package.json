@@ -1,0 +1,33 @@
+{
+  "name": "cxt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "forge test",
+    "postinstall": "npm run compile-contract-types",
+    "compile-contract-types": "typechain --target ethers-v6 --out-dir './out/types' './out/**/*.json'",
+    "deploy": "forge script script/Deployements.sol:Deploy --broadcast --rpc-url https://sepolia.infura.io/v3/",
+    "fetch-holders": "ts-node script/GetHoldersList.ts",
+    "distribute-tokens": "ts-node script/batchTransfer.ts",
+    "distributeCSV": "ts-node script/batchTransferCSV.ts",
+    "migrate": "npm run fetch-holders && npm run distribute-tokens"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typechain/ethers-v6": "^0.5.1",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.11.1"
+  }
+}
