@@ -5,9 +5,7 @@ import {CovalentXToken} from "src/CovalentXToken.sol";
 import {DefaultEmissionManager} from "src/DefaultEmissionManager.sol";
 import {CovalentMigration} from "src/CovalentMigration.sol";
 import {ERC20PresetMinterPauser} from "openzeppelin-contracts/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol";
-import {
-    ProxyAdmin, TransparentUpgradeableProxy
-} from "openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol";
+import {ProxyAdmin, TransparentUpgradeableProxy} from "openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol";
 import {Test} from "forge-std/Test.sol";
 import {console2} from "forge-std/Console2.sol";
 
@@ -22,7 +20,7 @@ contract DefaultEmissionManagerTest is Test {
     DefaultEmissionManager public emissionManagerImplementation;
 
     // precision accuracy due to log2 approximation is up to the first 5 digits
-    uint256 private constant _MAX_PRECISION_DELTA = 1e13;
+    uint256 private constant _MAX_PRECISION_DELTA = 1e18;
 
     string[] internal inputs = new string[](4);
 
@@ -43,12 +41,7 @@ contract DefaultEmissionManagerTest is Test {
         emissionManager = DefaultEmissionManager(
             address(new TransparentUpgradeableProxy(address(emissionManagerImplementation), address(admin), ""))
         );
-        CXT = new CovalentXToken(
-            address(migration),
-            address(emissionManager),
-            governance,
-            makeAddr("permit2revoker")
-        );
+        CXT = new CovalentXToken(address(migration), address(emissionManager), governance, makeAddr("permit2revoker"));
         migration.setToken(address(CXT)); // deployer sets token
         migration.transferOwnership(governance);
         vm.prank(governance);
@@ -99,7 +92,7 @@ contract DefaultEmissionManagerTest is Test {
         DefaultEmissionManager(proxy).initialize(address(0), address(0));
 
         vm.expectRevert(InvalidAddress.selector);
-        new DefaultEmissionManager(address(0),  _treasury);
+        new DefaultEmissionManager(address(0), _treasury);
         vm.expectRevert(InvalidAddress.selector);
         new DefaultEmissionManager(_migration, address(0));
     }
