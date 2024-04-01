@@ -1,4 +1,4 @@
-const interestRatePerYear = 1.03;
+const interestRatePerYear = 1.05;
 const startSupply = 1_000_000_000e18;
 function main() {
     const [timeElapsedInSeconds] = process.argv.slice(2);

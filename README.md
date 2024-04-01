@@ -80,3 +80,19 @@ Procedures for transferring token holders from one contract to another, ensuring
     - `ignoreAddresses` is an array of addresses to be excluded from the batch transfer.
     - `ignoreAmount` is a constant to exclude holders with `ignoreAmount <=` from the batch transfer (e.g., holders with 100 or less CQT won’t receive any tokens).
     3. To run this script, use the command `npm run distributeCSV`.
+
+    ## Inflation Rate and MintPerSecondCap Calculation
+
+## FAQ's
+### How to Calculate Inflation Rate?
+The inflation rate is calculated using the logarithm of the desired annual increase. For a 5% increase, the calculation is as follows:
+- **Formula:** `INTEREST_PER_YEAR_LOG2 = log2(1.05) = 0.07038932789139801e18`
+- Here, `1.05` represents the initial supply of 1.00 (1 billion) plus the 5% increase.
+
+### How to Calculate MintPerSecondCap?
+The `mintPerSecondCap` is calculated based on the annual compounded inflation but needs to consider a longer timeframe for accuracy. Initial calculations for 1 year might suggest 1.59 CXT per second, but over 10 years, due to compounding, the average increases:
+- **For One Year:** `5% of 1 billion = 50 million / (365*24*60*60) = 1.59 CXT per second`
+- **Over 10 Years (Compounded):** `Total minted over 10 years / (10*365*24*60*60) = ~2 CXT per second`
+- Given the compounded rate, we've set `mintPerSecondCap = 2.5e18` (or 2.5 tokens per second) as a conservative cap.
+
+This approach ensures that the `mintPerSecondCap` is sufficiently conservative to cover the compounded inflation rate over a decade without allowing excessive minting.

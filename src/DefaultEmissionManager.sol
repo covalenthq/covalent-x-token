@@ -14,7 +14,7 @@ import {PowUtil} from "./lib/PowUtil.sol";
 contract DefaultEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionManager {
     using SafeERC20 for ICovalentXToken;
 
-    uint256 public constant INTEREST_PER_YEAR_LOG2 = 0.07038932790849372e18;
+    uint256 public constant INTEREST_PER_YEAR_LOG2 = 0.07038932789139801e18;
     uint256 public constant START_SUPPLY = 1_000_000_000e18;
     address private immutable DEPLOYER;
 

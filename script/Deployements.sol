@@ -6,9 +6,7 @@ import "forge-std/console2.sol";
 import {CovalentXToken} from "src/CovalentXToken.sol";
 import {CovalentMigration} from "src/CovalentMigration.sol";
 import {DefaultEmissionManager} from "src/DefaultEmissionManager.sol";
-import {
-    ProxyAdmin, TransparentUpgradeableProxy
-} from "openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol";
+import {ProxyAdmin, TransparentUpgradeableProxy} from "openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol";
 
 contract Deploy is Script {
     address public deployerAdmin;
@@ -35,8 +33,9 @@ contract Deploy is Script {
         );
 
         address emissionManagerImplementation = address(new DefaultEmissionManager(migrationProxy, treasury));
-        address emissionManagerProxy =
-            address(new TransparentUpgradeableProxy(address(emissionManagerImplementation), address(admin), ""));
+        address emissionManagerProxy = address(
+            new TransparentUpgradeableProxy(address(emissionManagerImplementation), address(admin), "")
+        );
 
         CovalentXToken covalentXToken = new CovalentXToken(
             migrationProxy,
@@ -54,7 +53,7 @@ contract Deploy is Script {
         console.log("Covalent Network Token address: ", address(covalentXToken), "\n");
         console.log("Covalent Migration address: ", address(migrationProxy), "\n");
         console.log("Default Emission Manager address: ", address(emissionManagerProxy), "\n");
-
+        console.log("Admin address: ", address(admin), "\n");
         vm.stopBroadcast();
     }
 }
