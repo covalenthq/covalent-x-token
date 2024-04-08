@@ -14,17 +14,21 @@ contract CovalentXToken is ERC20Permit, AccessControlEnumerable, ICovalentXToken
     bytes32 public constant CAP_MANAGER_ROLE = keccak256("CAP_MANAGER_ROLE");
     bytes32 public constant PERMIT2_REVOKER_ROLE = keccak256("PERMIT2_REVOKER_ROLE");
     address public constant PERMIT2 = 0x000000000022D473030F116dDEE9F6B43aC78BA3;
-    uint256 public mintPerSecondCap = 10e18;
+    uint256 public mintPerSecondCap = 2.5e18;
     uint256 public lastMint;
     bool public permit2Enabled;
 
-    constructor(address migration, address emissionManager, address protocolCouncil, address emergencyCouncil)
-        ERC20("Covalent X Token", "CXT")
-        ERC20Permit("Covalent X Token")
-    {
+    constructor(
+        address migration,
+        address emissionManager,
+        address protocolCouncil,
+        address emergencyCouncil
+    ) ERC20("Covalent X Token", "CXT") ERC20Permit("Covalent X Token") {
         if (
-            migration == address(0) || emissionManager == address(0) || protocolCouncil == address(0)
-                || emergencyCouncil == address(0)
+            migration == address(0) ||
+            emissionManager == address(0) ||
+            protocolCouncil == address(0) ||
+            emergencyCouncil == address(0)
         ) revert InvalidAddress();
         _grantRole(DEFAULT_ADMIN_ROLE, protocolCouncil);
         _grantRole(EMISSION_ROLE, emissionManager);

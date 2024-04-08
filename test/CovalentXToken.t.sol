@@ -16,7 +16,7 @@ contract CovalentXTokenTest is Test {
     address public protocolCouncil;
     address public emergencyCouncil;
     DefaultEmissionManager public emissionManager;
-    uint256 public mintPerSecondCap = 10e18; // 10 CXT tokens per second
+    uint256 public mintPerSecondCap = 2.5e18;
 
     function setUp() external {
         migration = makeAddr("migration");
