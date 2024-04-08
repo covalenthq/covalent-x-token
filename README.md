@@ -1,22 +1,22 @@
 # Covalent X Token (CXT)
 
-## Access Control List:
+## Access Control Lists
 
-## CovalentNetworkToken.sol:
+### CovalentNetworkToken.sol
 - **EMISSION_ROLE:** This role is granted to the **emissionManager**. It allows the role holders to mint new tokens.
 - **CAP_MANAGER_ROLE:** This role is granted to the **protocolCouncil**. It allows the role holder to update the mint cap.
 - **PERMIT2_REVOKER_ROLE:** This role is granted to the **protocolCouncil** and **emergencyCouncil**. It allows the role holders to update the permit2Enabled state, which controls whether the permit2 contract has full approval by default.
 
-## CovalentMigration.sol:
+### CovalentMigration.sol
 - **MIGRATION_ROLE:** This role is granted to the **migrationManager**. It allows the role holder to migrate tokens from the old contract to the new contract.
 
-## DefaultEmissionManager.sol:
+### DefaultEmissionManager.sol
 - **EMISSION_ROLE:** This role is granted to the **emissionManager**. It allows the role holder to mint new tokens.
 - **CAP_MANAGER_ROLE:** This role is granted to the **protocolCouncil**. It allows the role holder to update the mint cap.
 - **PERMIT2_REVOKER_ROLE:** This role is granted to the **protocolCouncil** and **emergencyCouncil**. It allows the role holders to update the permit2Enabled state, which controls whether the permit2 contract has full approval by default.
 
 
-## Installation Steps:
+## Installation Steps
 
 1. Clone the above repository
 2. Install Foundry by following the instructions from [here](https://github.com/foundry-rs/foundry#installation)
@@ -27,7 +27,7 @@
 3. Run `foundryup` then run `npm install` 
 4. Now you're ready with the setup, you can build, compile, test, deploy
 
-### Deploy:
+## Deploy
 
 Steps for testing, reviewing, and deploying a smart contract to a blockchain.
 
@@ -44,7 +44,8 @@ Steps for testing, reviewing, and deploying a smart contract to a blockchain.
     2. Covalent Migration address
     3. Default Emission Manager address
 7. The deployments are stored in ./broadcast
-## Migrate Old token Holders:
+
+## Migrate old token holders
 
 Procedures for transferring token holders from one contract to another, ensuring accuracy and security.
 
@@ -83,13 +84,14 @@ Procedures for transferring token holders from one contract to another, ensuring
 
     ## Inflation Rate and MintPerSecondCap Calculation
 
-## FAQ's
-### How to Calculate Inflation Rate?
+## FAQ
+### How to calculate the Inflation Rate?
+
 The inflation rate is calculated using the logarithm of the desired annual increase. For a 5% increase, the calculation is as follows:
 - **Formula:** `INTEREST_PER_YEAR_LOG2 = log2(1.05) = 0.07038932789139801e18`
 - Here, `1.05` represents the initial supply of 1.00 (1 billion) plus the 5% increase.
 
-### How to Calculate MintPerSecondCap?
+### How to calculate MintPerSecondCap?
 The `mintPerSecondCap` is calculated based on the annual compounded inflation but needs to consider a longer timeframe for accuracy. Initial calculations for 1 year might suggest 1.59 CXT per second, but over 10 years, due to compounding, the average increases:
 - **For One Year:** `5% of 1 billion = 50 million / (365*24*60*60) = 1.59 CXT per second`
 - **Over 10 Years (Compounded):** `Total minted over 10 years / (10*365*24*60*60) = ~2 CXT per second`
