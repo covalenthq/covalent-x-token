@@ -88,7 +88,7 @@ Procedures for transferring token holders from one contract to another, ensuring
 ### How to calculate the Inflation Rate?
 
 The inflation rate is calculated using the logarithm of the desired annual increase. For a 5% increase, the calculation is as follows:
-- **Formula:** `INTEREST_PER_YEAR_LOG2 = log2(1.05) = 0.07038932789139801e18`
+- **Formula:** `INTEREST_PER_YEAR_LOG2 = log2(1.05) = 0.07038932789139801` (`0.07038932789139801e18` for solidity)
 - Here, `1.05` represents the initial supply of 1.00 (1 billion) plus the 5% increase.
 
 ### How to calculate MintPerSecondCap?
