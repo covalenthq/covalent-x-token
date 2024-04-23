@@ -24,6 +24,7 @@ contract CovalentMigration is Ownable2StepUpgradeable, ICovalentMigration {
 
     /// @inheritdoc ICovalentMigration
     function setToken(address _cxt) external onlyOwner {
+        require(_cxt != address(0), "CovalentMigration: address cannot be zero");
         cxt = IERC20(_cxt);
     }
 
