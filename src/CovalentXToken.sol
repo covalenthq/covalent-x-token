@@ -69,9 +69,8 @@ contract CovalentXToken is ERC20Permit, AccessControlEnumerable, ICovalentXToken
     }
 
     /// @inheritdoc ICovalentXToken
-    // @todo not sure if needed
     function version() external pure returns (string memory) {
-        return "1.1.0";
+        return "1.0.0";
     }
 
     function _updatePermit2Allowance(bool enabled) private {
