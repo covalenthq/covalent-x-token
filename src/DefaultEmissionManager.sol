@@ -39,6 +39,8 @@ contract DefaultEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionMana
         if (DEPLOYER != msg.sender) revert();
         if (token_ == address(0) || owner_ == address(0)) revert InvalidAddress();
 
+        // Initialize the Ownable2StepUpgradeable contract
+        __Ownable2Step_init();
         token = ICovalentXToken(token_);
         startTimestamp = block.timestamp;
 
