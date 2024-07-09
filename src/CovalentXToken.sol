@@ -24,12 +24,8 @@ contract CovalentXToken is ERC20Permit, AccessControlEnumerable, ICovalentXToken
         address protocolCouncil,
         address emergencyCouncil
     ) ERC20("Covalent X Token", "CXT") ERC20Permit("Covalent X Token") {
-        if (
-            migration == address(0) ||
-            emissionManager == address(0) ||
-            protocolCouncil == address(0) ||
-            emergencyCouncil == address(0)
-        ) revert InvalidAddress();
+        if (migration == address(0) || protocolCouncil == address(0) || emergencyCouncil == address(0))
+            revert InvalidAddress();
         _grantRole(DEFAULT_ADMIN_ROLE, protocolCouncil);
         _grantRole(EMISSION_ROLE, emissionManager);
         _grantRole(CAP_MANAGER_ROLE, protocolCouncil);
