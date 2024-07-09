@@ -41,7 +41,7 @@ contract DeployCXT is Script {
 
         CovalentMigration(migrationProxy).transferOwnership(protocolCouncil); // governance needs to accept the ownership transfer
 
-        console.log("Covalent Network Token address: ", address(covalentXToken), "\n");
+        console.log("Covalent X Token address: ", address(covalentXToken), "\n");
         console.log("Covalent Migration address: ", address(migrationProxy), "\n");
         console.log("Admin address: ", address(admin), "\n");
         vm.stopBroadcast();
