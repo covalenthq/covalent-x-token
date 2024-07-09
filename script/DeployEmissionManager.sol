@@ -15,10 +15,11 @@ contract DeployEmissionManager is Script {
         deployerAdmin = vm.addr(deployerPrivateKey);
         address treasury = address(deployerAdmin);
         address protocolCouncil = address(deployerAdmin);
+        address emergencyCouncil = address(deployerAdmin);
         vm.startBroadcast(deployerPrivateKey);
 
         ProxyAdmin admin = new ProxyAdmin();
-        admin.transferOwnership(protocolCouncil);
+        admin.transferOwnership(emergencyCouncil);
 
         address migrationProxy = 0x47ab75e2F99aE4f4149FDB81A2278464289b8DE1;
         address covalentXTokenAddress = 0x0996faFbc0A9835Ed2C786EB53913Ec11304d56A;
