@@ -56,7 +56,7 @@ const BatchTransfer = async () => {
     CovalentMigrationABI,
     provider,
   );
-  const tokenAddress = await covalentMigrationContract.cnt()
+  const tokenAddress = await covalentMigrationContract.cxt()
     .catch(() => null);
 
   if (!tokenAddress) {
