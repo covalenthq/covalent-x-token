@@ -17,5 +17,5 @@ interface ICovalentMigration {
     /// @param amounts Amounts of tokens to be distributed
     function batchDistribute(address[] calldata recipients, uint256[] calldata amounts) external;
 
-    // function cxt() external view returns (IERC20);
+    function cxt() external view returns (IERC20);
 }

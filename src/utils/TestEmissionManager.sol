@@ -10,12 +10,12 @@ import {PowUtil} from ".././lib/PowUtil.sol";
 /// @title Default Emission Manager
 /// @author Covalent
 /// @notice A default emission manager implementation for the Covalent ERC20 token contract on Ethereum L1
-/// @dev The contract allows for a 3% mint per year (compounded).
+/// @dev The contract allows for a 5% mint per year (compounded).
 contract TestEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionManager {
     using SafeERC20 for ICovalentXToken;
-    //log2(1.03) = 0.07038932790849372
+    //log2(1.05) = 0.07038932790849372
 
-    uint256 public constant INTEREST_PER_YEAR_LOG2 = 0.07038932790849372e18; //0.04264433740849372e18;
+    uint256 public constant INTEREST_PER_YEAR_LOG2 = 0.07038932790849372e18;
     uint256 public constant START_SUPPLY = 1_000_000_000e18;
     address private immutable DEPLOYER;
 

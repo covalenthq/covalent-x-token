@@ -8,7 +8,7 @@ import {ICovalentXToken} from "./interfaces/ICovalentXToken.sol";
 /// @title Covalent ERC20 token
 /// @author
 /// @notice This is the Covalent ERC20 token contract on Ethereum L1
-/// @dev allows for additional emission based on hub and treasury requirements
+/// @dev allows for additional emission based treasury requirements
 contract CovalentXToken is ERC20Permit, AccessControlEnumerable, ICovalentXToken {
     bytes32 public constant EMISSION_ROLE = keccak256("EMISSION_ROLE");
     bytes32 public constant CAP_MANAGER_ROLE = keccak256("CAP_MANAGER_ROLE");
@@ -69,9 +69,8 @@ contract CovalentXToken is ERC20Permit, AccessControlEnumerable, ICovalentXToken
     }
 
     /// @inheritdoc ICovalentXToken
-    // @todo not sure if needed
     function version() external pure returns (string memory) {
-        return "1.1.0";
+        return "1.0.0";
     }
 
     function _updatePermit2Allowance(bool enabled) private {

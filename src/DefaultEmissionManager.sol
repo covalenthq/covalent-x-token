@@ -44,7 +44,7 @@ contract DefaultEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionMana
 
         assert(START_SUPPLY == token.totalSupply());
 
-        token.safeApprove(address(migration), type(uint256).max); //@todo: uncomment this
+        token.safeApprove(address(migration), type(uint256).max);
         // initial ownership setup bypassing 2 step ownership transfer process
         _transferOwnership(owner_);
     }
@@ -72,7 +72,7 @@ contract DefaultEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionMana
 
     /// @inheritdoc IDefaultEmissionManager
     function version() external pure returns (string memory) {
-        return "1.1.0";
+        return "1.0.0";
     }
 
     uint256[48] private __gap;
