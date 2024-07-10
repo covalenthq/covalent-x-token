@@ -61,8 +61,7 @@ contract DefaultEmissionManager is Ownable2StepUpgradeable, IDefaultEmissionMana
         emit TokenMint(amountToMint, msg.sender);
 
         ICovalentXToken _token = token;
-        _token.mint(address(this), amountToMint);
-        _token.safeTransfer(treasury, amountToMint);
+        _token.mint(treasury, amountToMint);
     }
 
     /// @inheritdoc IDefaultEmissionManager
