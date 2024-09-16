@@ -1,0 +1,33 @@
+[
+  {
+    "type": "function",
+    "name": "batchDistribute",
+    "inputs": [
+      {
+        "name": "recipients",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "amounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setToken",
+    "inputs": [
+      {
+        "name": "_cxt",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]
