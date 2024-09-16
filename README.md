@@ -24,7 +24,10 @@
     curl -L https://foundry.paradigm.xyz | bash
     ```
     then follow the steps on screen to setup `foundryup`
-3. Run ```foundryup``` then run ```npm install``` 
+3. Run 
+    ```
+    foundryup and then run npm install
+    ```  
 4. Now you're ready with the setup, you can build, compile, test, deploy
 
 ## Deploy
@@ -33,17 +36,34 @@ Steps for testing, reviewing, and deploying a smart contract to a blockchain.
 
 1. Once the above setup is completed successfully, create an `.env` file and configure all the details as per `.env.example`.
 2. For compiling and testing the contracts you can execute:
-   - Compile: ```forge build```,
-   - Run test cases: ```forge test```
+   - Compile: this will generate the abi's in out/* respectively
+    ```
+    forge build
+    ```
+   - Run test cases:
+    ```
+    forge test
+    ```
    - For detailed log of test scenarios or individual test cases, run: ```forge test --match-test test_MintDelay -vvv``` (replace `test_MintDelay` with other function names).
 3. You will be able to see the test cases run and play with them accordingly if needed.
-4. For compiling the contracts, you can run ```npm run postinstall``` or ```npm run compile-contract-types``` (if facing any errors `Error occured:  Not a valid ABI` then remove build-info folder from out dir and run the above command again) - this will generate the types for the contracts and you can find the abi's in out/* respectively.
-5. After successful compilation, you can deploy contracts by running ```npm run deploy -- --rpc-url <RPC_URL>```.
-6. After a successful deployment of the token contract, you will see 3 addresses:
+4. For compiling the contracts,
+    ```
+    npm run postinstall
+    ```
+    or 
+    ```
+    npm run compile-contract-types
+    ```
+   (if facing any errors `Error occured:  Not a valid ABI` then remove build-info folder from out dir and run the above command again) - this will generate the types for the contracts and you can find the abi's in out/* respectively.
+6. After successful compilation, you can deploy contracts by running 
+    ```
+       npm run deploy -- --rpc-url <RPC_URL>
+    ```
+8. After a successful deployment of the token contract, you will see 3 addresses:
     1. Covalent X Token address
     2. Covalent Migration address
     3. Default Emission Manager address
-7. The deployments are stored in ./broadcast
+9. The deployments are stored in ./broadcast
 
 ## Migrate old token holders
 
